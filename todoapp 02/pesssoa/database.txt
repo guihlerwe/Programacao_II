@@ -8,9 +8,9 @@ create table `todo`(
 
 create table `pessoa` (
 	`idpessoa` int not null auto_increment,
-	`nome` varchar(50) not null,
-    `cpf` varchar(11) not null,
-    `endereco` varchar(50) not null,
+	`nome` varchar(50) default null,
+    `cpf` varchar(11) default null,
+    `endereco` varchar(50) default null,
     primary key (`idpessoa`)
 );
     
