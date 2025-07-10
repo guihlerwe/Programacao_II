@@ -1,0 +1,10 @@
+use todoapp;
+
+create table `todo`(
+	`idtodo` int NOT NULL AUTO_INCREMENT,
+    `DESCRIPTION` varchar(100) default null,
+    primary key (`idtodo`)
+    );
+    
+insert into `todoapp`.todo (description) values ('fazer olá mundo novo');
+select * from `todo`;
