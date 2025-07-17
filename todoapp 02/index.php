@@ -30,7 +30,8 @@
                 echo "<div>"; 
                 echo "<tr>"                          
                         . "<td hidden>".$row["idtodo"]."</td>"
-                        . "<td>".$row["description"]."</td>"
+                        //. "<td>".$row["description"]."</td>"
+                        . "<input value = "".$row["descriptio 
                     ."</tr>";
                 echo "</div>";
             }
