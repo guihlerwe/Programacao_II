@@ -25,6 +25,8 @@
                         . "<td>"
                         .$row["description"]
                         . "</td>"
+                        . @"<button onclick=removerTodo($rowid)>Atualizar</button>"
+                        . "<td>"
                         . "<td>"
                         . @"<button onclick=removerTodo($rowid)>Remover</button>"
                         ."</td>"                                            
@@ -37,9 +39,16 @@
             $description = htmlspecialchars($_POST['description']); 
             if(!empty($description)){
                 Salvar($description);
-            }           
+            }
+            Recuperar();           
         }
-        Recuperar();        
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            Recuperar();        
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+            $idRemover = $_GET['id']; 
+            echo "Pegou: ". $idRemover;           
+        }
     ?>
     <form method="post">
         <label for="todo-description">Descrição da tarefa:</label>
