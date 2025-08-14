@@ -8,16 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $putData = json_decode(file_get_contents('php://input',true));
     $connection = require("conectar.php");
 
-    $id = $putData->id;
+    $id = $putData->idpessoa;
     $nomeNova = $putData->nome;
     $cpfNova = $putData->cpf;
+
     $enderecoNova = $putData->endereco;
-    $sqlNome = @"update todo set nome = '$nomeNova' where idpessoa = $id";
-    $sqlCpf = @"update todo set cpf = '$cpfNova' where idpessoa = $id";
-    $sqlEndereco = @"update todo set endereco = '$enderecoNova' where idpessoa = $id";
+    $sql = @"update pessoa set nome = '$nomeNova', cpf = '$cpfNova', endereco = '$enderecoNova' where idpessoa = $id";
 
     if ($connection -> 
-        query($sqlNome, $sqlCpf, $sqlEndereco)) {                 
+        query($sql)) {                 
     }
     $connection -> close();
 
