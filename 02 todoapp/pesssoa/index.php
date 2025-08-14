@@ -11,13 +11,14 @@
             if ($connection -> 
                 query(@"UPDATE pessoa SET description = '$pessoa' WHERE idpessoa = '$idpessoa'")) {                 
             }
+            /*
             if ($connection -> 
                 query(@"UPDATE pessoa SET description = '$pessoa' WHERE nome = '$nome'")) {                 
             }if ($connection -> 
                 query(@"UPDATE pessoa SET description = '$pessoa' WHERE cpf = '$cpf'")) {                 
             }if ($connection -> 
                 query(@"UPDATE pessoa SET description = '$pessoa' WHERE endereco = '$endereco'")) {                 
-            }
+            }*/
             $connection -> close();
         }
 
@@ -30,21 +31,39 @@
             $connection -> close();
         }
 
-        #RECUPERAR
+        #Deletar
+        /*function Deletar{
+            $connection = require("conectar.php");
+        }*/
+
+        #"RECUPERAR" mostrar na pagina
         function Recuperar(){
             $connection = require("conectar.php");
             $sql = "SELECT idpessoa, nome, cpf, endereco from pessoa";
 
             $result = $mysqli->query($sql);
             echo "<table>";
-            while ($row = $result->fetch_assoc()) {           
+            while ($row = $result->fetch_assoc()) {     
+                $rowid = "'_" . $row["idpessoa"] . "'";       
+                $nome = $row["nome"];
+                $cpf = $row["cpf"];
+                $endereco = $row["endereco"];
+
                 echo "<div>"; 
                 echo "<tr>"                          
-                        . "<td>".$row["nome"]."</td>"
-                        . "<td>".$row["cpf"]."</td>"
-                        . "<td>".$row["endereco"]."</td>"
+                        . "<td>"
+                           . @"<input type='text' class = 'valor-descricao' value = '$nome'/>"                         
+                        . "</td>"
+                        . "<td>"
+                           . @"<input type='text' class = 'valor-descricao' value = '$cpf'/>"                         
+                        . "</td>"
+                        . "<td>"
+                           . @"<input type='text' class = 'valor-descricao' value = '$endereco'/>"                         
+                        . "<td>"
+                        . @"<button onclick=atualizarTodo($rowid)>Atualizar</button>"
+                        . @"<button onclick=removerTodo($rowid)>Remover</button>"
+                        ."</td>"      
                     ."</tr>";
-                echo "</div>";
             }
             echo "</table>";
         }      
@@ -81,10 +100,10 @@
     <form method="post">
         <label for="nome">Nome:</label>
         <input name="nome" id="nome" type="text">
-        <br>
+        
         <label for="cpf">CPF:</label>
         <input name="cpf" id="cpf" type="text">
-        <br>
+        
         <label for="endereco">Endereco:</label>
         <input name="endereco" id="endereco" type="text">
         <button type="submit"> Salvar</button>

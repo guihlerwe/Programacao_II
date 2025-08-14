@@ -9,7 +9,7 @@ $endereco = $_POST['endereco'];
 
 //Insert
 if ($connection -> 
-  query(@"INSERT INTO pessoa (nome, cpf, endereco) VALUES ('$descricao');")) { 
+  query(@"INSERT INTO pessoa (nome, cpf, endereco) VALUES ('$nome' '$cpf' '$endereco');")) { 
   echo "Inserido com sucesso.";
 }
 
