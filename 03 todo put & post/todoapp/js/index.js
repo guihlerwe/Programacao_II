@@ -53,3 +53,61 @@ async function atualizarBanco(idElemento, descricao){
         console.error('Fetch error:', error);
     });  
 }
+
+// NOVAS FUNÇÕES ADICIONADAS PARA PESSOA
+async function salvarPessoa(nome, cpf, endereco) {
+    await fetch('http://localhost:8080/save.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            "nome": nome,
+            "cpf": cpf,
+            "endereco": endereco
+        })
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('Pessoa salva:', data);
+        alert('Pessoa salva com sucesso!');
+    })
+    .catch((error) => {
+        console.error('Erro ao salvar pessoa:', error);
+        alert('Erro ao salvar pessoa');
+    });
+}
+
+async function atualizarPessoa(id, nome, cpf, endereco) {
+    await fetch('http://localhost:8080/update.php', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            "id": id,
+            "nome": nome,
+            "cpf": cpf,
+            "endereco": endereco
+        })
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('Pessoa atualizada:', data);
+        alert('Pessoa atualizada com sucesso!');
+    })
+    .catch((error) => {
+        console.error('Erro ao atualizar pessoa:', error);
+        alert('Erro ao atualizar pessoa');
+    });
+}

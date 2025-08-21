@@ -1,3 +1,4 @@
+create database todoapp;
 use todoapp;
 
 create table `todo`(
