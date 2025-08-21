@@ -25,8 +25,8 @@ async function removerBanco(idElemento){
 async function atualizarTodo(elemento){
     var elementoAtualizar = document.querySelector("#"+elemento);
     var descricao = elementoAtualizar.querySelector(".valor-descricao");
-    console.log(descricao.value);
-    await atualizarBanco(elemento.substring(1,elemento.length),descricao.value);
+    console.log("Descrição encontrada:", descricao.value);
+    await atualizarBanco(elemento.substring(1,elemento.length), descricao.value);
 }
 
 async function atualizarBanco(idElemento, descricao){
@@ -36,21 +36,23 @@ async function atualizarBanco(idElemento, descricao){
             'Content-type': 'application/json; charset=UTF-8',
         },
         body: JSON.stringify({
-            "id":idElemento,
-            "descricao":descricao
+            "id": idElemento,
+            "descricao": descricao
         })
     })
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        console.log(response.json());
+        return response.json();
     })
     .then((data) => {
-        console.log('Data fetched:', data);
+        console.log('Data updated:', data);
+        alert('Todo atualizado com sucesso!');
     })
     .catch((error) => {
         console.error('Fetch error:', error);
+        alert('Erro ao atualizar todo');
     });  
 }
 
@@ -111,3 +113,7 @@ async function atualizarPessoa(id, nome, cpf, endereco) {
         alert('Erro ao atualizar pessoa');
     });
 }
+
+// Exemplo de como usar as funções:
+// Para salvar: salvarPessoa('João Silva', '12345678901', 'Rua das Flores, 123');
+// Para atualizar: atualizarPessoa(1, 'João Silva Santos', '12345678901', 'Rua das Rosas, 456');

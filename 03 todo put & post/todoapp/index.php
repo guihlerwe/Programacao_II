@@ -9,7 +9,7 @@
         function Salvar($todo){
             $connection = require("dbfactory.php");                        
             if ($connection -> 
-                query(@"INSERT INTO todo (description) VALUES ('$todo');")) {                 
+                query("INSERT INTO todo (description) VALUES ('$todo')")) {                 
             }
             $connection -> close();
         }
@@ -17,18 +17,19 @@
             $connection = require("dbfactory.php");
             $sql = "SELECT idtodo, description FROM todo";
 
-            $result = $mysqli->query($sql);
+            $result = $connection->query($sql);
             echo "<table>";
             while ($row = $result->fetch_assoc()) {  
                 $rowid = "'_" . $row["idtodo"] . "'";       
                 echo "<tr id = "."_".$row["idtodo"].">"                        
                         . "<td>"
-                        .$row["description"]
+                        . "<input type='text' class='valor-descricao' value='".$row["description"]."' />"
                         . "</td>"
-                        . @"<button onclick=removerTodo($rowid)>Atualizar</button>"
                         . "<td>"
+                        . "<button onclick=atualizarTodo($rowid)>Atualizar</button>"
+                        . "</td>"
                         . "<td>"
-                        . @"<button onclick=removerTodo($rowid)>Remover</button>"
+                        . "<button onclick=removerTodo($rowid)>Remover</button>"
                         ."</td>"                                            
                     ."</tr>";
             }
