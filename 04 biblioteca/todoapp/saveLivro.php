@@ -17,9 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postData = json_decode(file_get_contents('php://input'), true);
     
     if(!empty($postData['descricao']) && !empty($postData['titulo']) && !empty($postData['autor'])){
+        //caso descricao, título e autor não estejam vazios os dados sao salvos
         Salvar($postData['descricao'], $postData['titulo'], $postData['autor']);
     } else {
         echo json_encode(['success' => false, 'message' => 'Dados incompletos']);
+        //caso estejam o usuario recebe mensagem de dados imcompletos
     }        
 } else {
     echo json_encode(['error' => 'Método não permitido']);

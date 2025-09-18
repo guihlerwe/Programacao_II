@@ -60,27 +60,33 @@ async function atualizarLivroBanco(id, descricao, titulo, autor){
 
 async function salvarLivro(descricao, titulo, autor){
     await fetch('http://localhost:8080/saveLivro.php', {
+        //define qual arquivo vai processar esse metodo
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
-        body: JSON.stringify({            
+        body: JSON.stringify({ // define quais dados do "objeto"
+                               //  serão colocados para o json       
             "descricao": descricao,
             "titulo": titulo,
             "autor": autor
         })
     })
     .then((response) => {
-        if (!response.ok) {
+        if (!response.ok) { //se a resposta esta entre 200-299 
             throw new Error(`HTTP error! Status: ${response.status}`);
+                            //status coloca o codigo http para o console
         }
         return response.json();
+        // Parse the response body as JSON
     })
     .then((data) => {
         console.log('Data fetched:', data);
+        // Work with the parsed JSON data
     })
     .catch((error) => {
         console.error('Fetch error:', error);
+        // Display an error message to the user
     });
 }
 
