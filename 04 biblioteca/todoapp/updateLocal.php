@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $connection = require("dbfactory.php");
     $putData = json_decode(file_get_contents('php://input'), true);
     
-    $id = $putData['id'];
+    $id = $putData['id']; //pega o id do putdata 
     $nomeNovo = $putData['nome'];
     $cepNovo = $putData['cep'];
     $enderecoNovo = $putData['endereco'];

@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {    
     $id = $_GET['id'] ?? null; //pega o id do livro   
     
-    if ($id !== null) { //se  livro existe
+    if ($id !== null) { //se livro existe
         $connection = require("dbfactory.php");//faz conexao
         $sql = "DELETE FROM livro WHERE id = $id"; //deleta do bd
         
