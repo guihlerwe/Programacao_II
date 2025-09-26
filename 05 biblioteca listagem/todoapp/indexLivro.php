@@ -10,7 +10,16 @@
             $connection = require("dbfactory.php");
             $sql = "SELECT id, descricao, titulo, autor FROM livro";
 
-            echo "<table>";
+            echo "<table border=\"1\">";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th>ID</th>";
+            echo "<th>Título</th>";
+            echo "<th>Autor</th>";
+            echo "<th>Editora</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody id=\"tableBody\">";
             while ($row = $result->fetch_assoc()) {  
                 $rowid = "'_" . $row["id"] . "'";       
                 $descricao = $row["descricao"];
@@ -28,10 +37,6 @@
                          . "<td>"
                            . "<input type='text' class='valor-autor' value='$autor'/>"                         
                         . "</td>"
-
-
-
-
                         . "<td>"
                         . "<button onclick=removerLivro($rowid)>Remover</button>"
                         ."</td>"
@@ -40,6 +45,7 @@
                         ."</td>"                                           
                     ."</tr>";
             }
+            echo "</tbody>";
             echo "</table>";
             $connection->close();
         }

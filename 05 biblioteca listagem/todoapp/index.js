@@ -321,3 +321,42 @@ async function pegarLivro(id, descricao, titulo, Autor){
         console.error('Fetch error:', error);
     }); 
 }
+
+async function fetchLivrosAndRenderTable() {
+  try {
+    const response = await fetch('listarLivros.php');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const livros = await response.json();
+
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = '';
+
+    livros.forEach(livro => {
+      const row = document.createElement('tr');
+
+      const cellId = document.createElement('td');
+      cellId.textContent = livro.id; // Ajuste conforme o nome do campo
+      row.appendChild(cellId);
+
+      const cellTitulo = document.createElement('td');
+      cellTitulo.textContent = livro.titulo; // Ajuste conforme o nome do campo
+      row.appendChild(cellTitulo);
+
+      const cellAutor = document.createElement('td');
+      cellAutor.textContent = livro.autor; // Ajuste conforme o nome do campo
+      row.appendChild(cellAutor);
+
+      const cellEditora = document.createElement('td');
+      cellEditora.textContent = livro.editora; // Ajuste conforme o nome do campo
+      row.appendChild(cellEditora);
+
+      tableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error('Erro ao buscar ou renderizar livros:', error);
+  }
+}
+
+fetchLivrosAndRenderTable();
