@@ -1,0 +1,58 @@
+06/11/2025 - PROF. CRISTIAN - 23A e 23B
+
+Exercício simples e didático para criar uma página web que receba dados de um formulário HTML e os exiba utilizando PHP. O exercício pode ser feito no VS Code, e abaixo listei um passo a passo do desenvolvimento.
+
+1 - Passo a passo: Formulário HTML + PHP
+Criar a pasta do projeto
+No VS Code, clique em “File” > “Open Folder” e crie uma nova pasta chamada meu_formulario.
+
+2 - Criar o arquivo HTML do formulário
+Crie um arquivo chamado index.html na pasta.
+Insira este código no arquivo:
+
+xml
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Simples</title>
+</head>
+<body>
+    <h1>Digite seus dados</h1>
+    <form action="processa.php" method="POST">
+        Nome: <input type="text" name="nome"><br>
+        Idade: <input type="number" name="idade"><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+
+***Este formulário envia os dados para um arquivo chamado processa.php usando o método POST.
+***Você pode implementar mais funções se desejar 
+
+3 - Criar o arquivo PHP para processar dados
+
+Crie um arquivo chamado processa.php na mesma pasta.
+
+Adicione o seguinte código:
+php
+<?php
+$nome = $_POST['nome'];
+$idade = $_POST['idade'];
+echo "<h1>Dados recebidos:</h1>";
+echo "Nome: " . $nome . "<br>";
+echo "Idade: " . $idade;
+?>
+
+*** O $_POST['nome'] e $_POST['idade'] são usados para pegar os dados recebidos do formulário.
+
+4 - Rode o projeto em um servidor local
+
+Abrir a pasta no VS Code.
+
+***Utilizar o próprio servidor embutido do PHP (se disponível)
+***Acesse o arquivo index.html via navegador: por exemplo, http://localhost/meu_formulario/index.html.
+
+5 - Testar e observar
+
+***Faremos novas implementações em cima deste exercício inicial.
