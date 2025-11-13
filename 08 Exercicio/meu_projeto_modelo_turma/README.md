@@ -1,0 +1,1 @@
+Projeto PHP educativo - Estrutura padrão com POST e includes.

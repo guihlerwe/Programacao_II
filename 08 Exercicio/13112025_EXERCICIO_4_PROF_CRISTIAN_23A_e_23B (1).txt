@@ -1,0 +1,26 @@
+13/11/2025 - PROF. CRISTIAN - 23A e 23B
+
+Exercício 4
+
+Vamos agora exemplificar e implementar exemplo de Banco de Dadis MySQL, 
+páginas adicionais, transformando o exemplo simples em um mini-sistema 
+completo
+
+4.1 Como usar (resumo)
+
+Importar o banco:
+
+mysql -u root -p < database/schema.sql
+
+***(Opcional, caso implementado) copie config/config.sample.php para config/config.php e ajuste usuário/senha.
+
+Rodar o servidor embutido do PHP:
+
+php -S localhost:8000
+
+Abrir: http://localhost:8000 → menu Alunos.
+
+Implemente as mudanças todas de acordo com as instruções, teste, ao final você compacte ("zipe") a pasta de trabalho (WorkSpace) e anexo como arquivo de entrega da atividade
+
+
+***Faremos novas implementações em cima deste exercício, agora foi somente a questão do MySQL.
